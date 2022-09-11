@@ -7,6 +7,8 @@ public class Mover : MonoBehaviour
     GameObject Player;
     float thrust;
     Rigidbody rb;
+    [SerializeField] float thrustAcceleration;
+
 
     public bool thrusting;
 
@@ -19,15 +21,14 @@ public class Mover : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         rb.useGravity = false;
 
-        thrust = Player.GetComponent<PlayerRotater>().thrustAcceleration;
+        //thrust = Player.GetComponent<PlayerRotater>().thrustAcceleration;
         Debug.Log(thrust);
 
     }
 
     void Update(){
         thrusting = Input.GetKey(KeyCode.W);
-
-        
+        thrust = thrustAcceleration;
     }    
 
     void FixedUpdate()

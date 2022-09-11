@@ -7,7 +7,6 @@ public class PlayerRotater : MonoBehaviour
     bool rotateR, rotateL;
 
     [SerializeField] private float rotationSpeed;
-    [SerializeField] public float thrustAcceleration;
 
     [Header("Rotation Axis")]
     [Tooltip("brendan if you manage to get the three bools on one line I will kiss you")]
