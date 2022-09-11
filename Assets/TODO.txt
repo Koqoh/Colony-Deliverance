@@ -1,0 +1,20 @@
+TO DO:::
+
+Minimap using the two planets
+
+gravity improvements: fixing slide on terrain, all planets affect player
+
+fix player getting stuck on side in ground
+
+teather system for damage for ship's central sphere
+
+add camera zoom buffer
+
+change constants for camera rotation
+
+movement for background plane and sun based on distance in z from 0,0
+
+improvements to lighting from sun
+
+implement little line or particles following player's position
+

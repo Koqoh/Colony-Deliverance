@@ -19,7 +19,7 @@ public class Mover : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         rb.useGravity = false;
 
-        thrust = Player.GetComponent<PlayerRotater>().thrust;
+        thrust = Player.GetComponent<PlayerRotater>().thrustAcceleration;
         Debug.Log(thrust);
 
     }
@@ -38,7 +38,7 @@ public class Mover : MonoBehaviour
     void ProcessThrust(){
         if(thrusting){
             Debug.Log("thrusting");
-            rb.AddForce(Player.transform.up * -thrust / (transform.position.z/10f+1f), ForceMode.VelocityChange);
+            rb.AddForce((Player.transform.up * -thrust)/* / (transform.position.z/10f+1f)*/, ForceMode.VelocityChange);
         }
     }
 
