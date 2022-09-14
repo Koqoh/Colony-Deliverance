@@ -1,8 +1,8 @@
 TO DO:::
 
-Minimap using the two planets
+planet affecting player the most needs to be the one targeted by the camera, not the closest
 
-gravity improvements: fixing slide on terrain, all planets affect player
+gravity improvements: fixing slide on terrain
 
 fix player getting stuck on side in ground
 
@@ -16,5 +16,14 @@ movement for background plane and sun based on distance in z from 0,0
 
 improvements to lighting from sun
 
-implement little line or particles following player's position
+implement little line or particles following player's position to show velocity
 
+fire y scales with time spent thrusting
+
+fire rotation speed scales with velocity of the ship
+
+DONE:::
+
+Minimap using the two planets
+
+All planets gravity affecting player

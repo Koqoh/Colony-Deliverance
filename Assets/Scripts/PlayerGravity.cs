@@ -7,7 +7,7 @@ public class PlayerGravity : MonoBehaviour
     List<Transform> Planets = new List<Transform>();
     
     [HideInInspector] 
-    public Transform lowestDistance;
+    Transform lowestDistance;
     Rigidbody rb;
     [SerializeField] float gravityStrength;
     bool thrustSwitch;
@@ -17,11 +17,11 @@ public class PlayerGravity : MonoBehaviour
             Planets.Add(i.transform);
         }
         rb = GetComponent<Rigidbody>();
-        lowestDistance = FindLowestDistance();
+        CameraMover.rotationTarget = lowestDistance = FindLowestDistance();
     }
 
     void Update(){
-        lowestDistance = FindLowestDistance();
+        CameraMover.rotationTarget = lowestDistance = FindLowestDistance();
     }
     void FixedUpdate()
     {
@@ -29,13 +29,14 @@ public class PlayerGravity : MonoBehaviour
         normalized gives direction of the closest planet
 
         */
+            //we need the camera to be affected by the larger planet if the larger planet's gravity is affecting the player more, we do this using vector3.magnitude.
             rb.AddForce(
-                lowestDistance.position.normalized * -gravityStrength /
+                transform.position.normalized * -gravityStrength /
                 (Mathf.Pow(Vector3.Distance(lowestDistance.position, Vector3.zero), 1.5f))
             );
     }
 
-    private Transform FindLowestDistance()
+    private Transform FindLowestDistance() //quite proud of this one, honestly
     {
         Transform closest = Planets[0];
         float distance = float.MaxValue;

@@ -28,11 +28,5 @@ public class Minimap : MonoBehaviour
         Vector3 targetPosition = new Vector3(xPos, yPos, zPos);
         transform.localPosition = targetPosition;
 
-
-        Debug.Log(factor);
-        Debug.Log(xPos);
-        Debug.Log(yPos);
-        Debug.Log(zPos);
-
     }
 }

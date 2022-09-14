@@ -8,7 +8,7 @@ public class CameraMover : MonoBehaviour
     public GameObject Planet;
     GameObject player;
     Rigidbody rb;
-    Transform rotationTarget;
+    public static Transform rotationTarget;
     public float targetAngle = 0; 
     float currentAngle;
     float angularAcceleration;
@@ -23,7 +23,7 @@ public class CameraMover : MonoBehaviour
     void Start()
     {
         rb = Planet.GetComponent<Rigidbody>();
-        rotationTarget = Planet.GetComponent<PlayerGravity>().lowestDistance;
+        //rotationTarget = Planet.GetComponent<PlayerGravity>().lowestDistance; //THIS SHOULD BE PHASED OUT FOR NEW GRAVITY CODE
         player = GameObject.FindGameObjectWithTag("Player");
         targetAngle = transform.eulerAngles.z; // get the current angle just for start
         currentAngle = targetAngle;
@@ -37,16 +37,12 @@ public class CameraMover : MonoBehaviour
         
         //TODO////////////////
         //implement camera noise sway with speed
-        //fix camera rotation to not snap so much WIP
-        //map
     }
 
     private void RotateCamera()
     {
         //finds the planet closest to the player, possibly needs phasing out in favor or multiple planets affecting the player?
-        rotationTarget = Planet.GetComponent<PlayerGravity>().lowestDistance;
 
-        
         targetAngle = -Mathf.Atan2(rotationTarget.position.x, rotationTarget.position.y) * 180 / Mathf.PI + 180;
 
         var error = translateAngle(targetAngle - currentAngle);

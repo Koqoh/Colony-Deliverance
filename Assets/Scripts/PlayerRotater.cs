@@ -61,20 +61,3 @@ public class PlayerRotater : MonoBehaviour
         
     }
 }
-/*
-    void ProcessRotation(){
-        if(rotateL){
-            transform.rotation *= Quaternion.Euler(Vector3.forward*rotationSpeed);
-        }
-        else if(rotateR){
-            transform.rotation *= Quaternion.Euler(Vector3.back*rotationSpeed);
-        }
-        
-    }
-
-    void LateUpdate(){
-        transform.position = Vector3.zero;
-
-    }
-}
-*/

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AudioBrain : MonoBehaviour
 {
-    public GameObject thrustTarget;
     AudioSource audioThing;
     void Start()
     {
@@ -13,6 +12,6 @@ public class AudioBrain : MonoBehaviour
 
     void Update()
     {
-        audioThing.mute = !thrustTarget.GetComponent<Mover>().thrusting;
+        audioThing.volume = ShipThrust.power * 0.05f;
     }
 }
