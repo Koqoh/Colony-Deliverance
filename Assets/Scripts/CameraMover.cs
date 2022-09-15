@@ -23,7 +23,6 @@ public class CameraMover : MonoBehaviour
     void Start()
     {
         rb = Planet.GetComponent<Rigidbody>();
-        //rotationTarget = Planet.GetComponent<PlayerGravity>().lowestDistance; //THIS SHOULD BE PHASED OUT FOR NEW GRAVITY CODE
         player = GameObject.FindGameObjectWithTag("Player");
         targetAngle = transform.eulerAngles.z; // get the current angle just for start
         currentAngle = targetAngle;

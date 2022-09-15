@@ -33,7 +33,7 @@ public class ShipThrust : MonoBehaviour
     void FixedUpdate()
     {
         ProcessThrust();
-        UpdatePower();
+        power = Util.PwrPercent(thrusting, power, 1);
     }
 
     void ProcessThrust(){
@@ -42,16 +42,5 @@ public class ShipThrust : MonoBehaviour
         }
     }
 
-    private void UpdatePower()
-    {
-        if (thrusting)
-        {
-            power += 0.05f;
-        }
-        else
-        {
-            power = 0;
-        }
-        power = Mathf.Clamp(power, 0, 1);
-    }
+
 }

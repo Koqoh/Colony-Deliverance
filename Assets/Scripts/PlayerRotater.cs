@@ -9,11 +9,12 @@ public class PlayerRotater : MonoBehaviour
     [SerializeField] private float rotationSpeed;
 
     [Header("Rotation Axis")]
-    [Tooltip("brendan if you manage to get the three bools on one line I will kiss you")]
+    [Tooltip("brendan if you manage to get the three bools on one line in the inspector I will kiss you")]
     [SerializeField] bool x; 
-    [Tooltip("brendan if you manage to get the three bools on one line I will kiss you")]
+    [Tooltip("brendan if you manage to get the three bools on one line in the inspector I will kiss you")]
     [SerializeField] bool y,z;
     Vector3 rotationAxis;
+    float power;
 
     Rigidbody rb;
 
@@ -34,24 +35,21 @@ public class PlayerRotater : MonoBehaviour
         rotateL = Input.GetKey(KeyCode.A);
         rotateR = Input.GetKey(KeyCode.D);
 
-        //if(rotateL && rotateR)
-        //    rotateL = rotateR = false;        
+        power = Util.PwrPercent(rotateL || rotateR, power, rotationSpeed);
     }
 
     void ProcessRotation(){
         //NEED TO FIX INTENDED GAME MECHANIC WITH GETTING STUCK ON SIDE ON PLANETS
         if(rotateL){
-            //transform.Rotate(Vector3.forward*rotationSpeed);
 
-            rb.AddRelativeTorque(Vector3.forward*rotationSpeed);
+            rb.AddRelativeTorque(Vector3.forward * power);
         }
         else if(rotateR){
-            //transform.Rotate(Vector3.back*rotationSpeed);
 
-            rb.AddRelativeTorque(Vector3.back*rotationSpeed);
+            rb.AddRelativeTorque(Vector3.back * power);
         }
     }
-
+    
     void LateUpdate(){
         transform.position = Vector3.zero;
         

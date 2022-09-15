@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class PlayerGravity : MonoBehaviour
 {
-    List<Transform> Planets = new List<Transform>();
+    //List<Transform> Planets = new List<Transform>();
     
     [HideInInspector] 
-    Transform lowestDistance;
+    static Transform lowestDistance;
     Rigidbody rb;
     [SerializeField] float gravityStrength;
     bool thrustSwitch;
     void Start()
     {
-        foreach(GameObject i in GameObject.FindGameObjectsWithTag("Planet")){
-            Planets.Add(i.transform);
-        }
+  
         rb = GetComponent<Rigidbody>();
-        CameraMover.rotationTarget = lowestDistance = FindLowestDistance();
+
+        lowestDistance = transform;
+        CameraMover.rotationTarget = lowestDistance;
     }
 
     void Update(){
-        CameraMover.rotationTarget = lowestDistance = FindLowestDistance();
+        FindLowestDistance();
+        CameraMover.rotationTarget = lowestDistance;
     }
     void FixedUpdate()
     {
@@ -36,20 +37,36 @@ public class PlayerGravity : MonoBehaviour
             );
     }
 
-    private Transform FindLowestDistance() //quite proud of this one, honestly
+    private void FindLowestDistance() //quite proud of this one, honestly
     {
-        Transform closest = Planets[0];
+        //float distance = float.MaxValue;
+
+        //foreach(Transform i in Planets)
+        //{
+            var thisDistance = Vector3.Distance(transform.position, Vector3.zero);
+            var oldDistance = Vector3.Distance(lowestDistance.position, Vector3.zero);
+            Debug.Log("o" + oldDistance);
+            Debug.Log("t" + thisDistance);
+            if(thisDistance < oldDistance){
+                lowestDistance = transform;
+            }    
+        //}
+    }
+/*    private void FindLowestDistance() //quite proud of this one, honestly
+    {
+        Transform closest = Vector3.Max;
         float distance = float.MaxValue;
 
         foreach(Transform i in Planets)
         {
-            var newDistance = Vector3.Distance(i.transform.position, Vector3.zero);
+            var newDistance = Vector3.Distance(transform.position, Vector3.zero);
             if(newDistance < distance){
                 distance = (float) newDistance;
                 closest = i;
             }    
         }
-        return closest;
+        lowestDistance = closest;
     }
+*/
 }
 
