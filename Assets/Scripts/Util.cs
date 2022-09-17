@@ -17,4 +17,16 @@ public class Util : MonoBehaviour
         var = Mathf.Clamp(var, 0, max);
         return var;
     }
+    public static float PwrPercent(bool on, float var)
+    {
+        if (on)
+        {
+            var += 0.05f;
+        }
+        else
+        {
+            var = 0;
+        }
+        return var;
+    }
 }

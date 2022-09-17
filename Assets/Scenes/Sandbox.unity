@@ -1002,18 +1002,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1713831515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713831513}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1c52b64561a204e9292df304566ad8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1713831517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,6 +1015,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityStrength: 2500
+--- !u!138 &1713831519
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713831513}
+  m_ConnectedBody: {fileID: 279609675026632111}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!4 &279609675026632107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7807289875819781656, guid: 3d735abcf41ebfe4e9525799d2a4d1fe, type: 3}
@@ -1081,22 +1084,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityStrength: 5000
---- !u!114 &279609675026632115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279609675026632110}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c91719e8c2a4ed246a8aed9a188513fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  skinWidth: 0.1
 --- !u!114 &279609675026632116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1460,7 +1447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8128d02b07616fc4ba5a9c9de5be323e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 2
+  rotationSpeed: 10
   x: 0
   y: 0
   z: 1

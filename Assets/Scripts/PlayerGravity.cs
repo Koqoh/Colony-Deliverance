@@ -10,13 +10,12 @@ public class PlayerGravity : MonoBehaviour
     static Transform lowestDistance;
     Rigidbody rb;
     [SerializeField] float gravityStrength;
-    bool thrustSwitch;
     void Start()
     {
   
         rb = GetComponent<Rigidbody>();
 
-        lowestDistance = transform;
+        FindLowestDistance();
         CameraMover.rotationTarget = lowestDistance;
     }
 
@@ -30,28 +29,25 @@ public class PlayerGravity : MonoBehaviour
         normalized gives direction of the closest planet
 
         */
-            //we need the camera to be affected by the larger planet if the larger planet's gravity is affecting the player more, we do this using vector3.magnitude.
             rb.AddForce(
                 transform.position.normalized * -gravityStrength /
                 (Mathf.Pow(Vector3.Distance(lowestDistance.position, Vector3.zero), 1.5f))
             );
     }
 
-    private void FindLowestDistance() //quite proud of this one, honestly
+    private void FindLowestDistance() 
+    //needs to set lowestDistance to a transform that is a lowest distance
+    //needs to be independant of previous lowestDistance
     {
-        //float distance = float.MaxValue;
+        float thisDistance = transform.position.magnitude;
+        float oldDistance = lowestDistance.position.magnitude;
 
-        //foreach(Transform i in Planets)
-        //{
-            var thisDistance = Vector3.Distance(transform.position, Vector3.zero);
-            var oldDistance = Vector3.Distance(lowestDistance.position, Vector3.zero);
-            Debug.Log("o" + oldDistance);
-            Debug.Log("t" + thisDistance);
-            if(thisDistance < oldDistance){
-                lowestDistance = transform;
-            }    
-        //}
+        if(lowestDistance == null || thisDistance <= oldDistance){
+            lowestDistance = this.transform;
+        }
+
     }
+    
 /*    private void FindLowestDistance() //quite proud of this one, honestly
     {
         Transform closest = Vector3.Max;

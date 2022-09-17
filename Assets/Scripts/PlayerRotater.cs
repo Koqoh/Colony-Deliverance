@@ -25,7 +25,9 @@ public class PlayerRotater : MonoBehaviour
     }
 
     void FixedUpdate(){
-       ProcessRotation();
+        power = Util.PwrPercent(rotateL || rotateR, power);
+        Debug.Log(power);
+        ProcessRotation();
     }
 
     void Update()
@@ -35,8 +37,10 @@ public class PlayerRotater : MonoBehaviour
         rotateL = Input.GetKey(KeyCode.A);
         rotateR = Input.GetKey(KeyCode.D);
 
-        power = Util.PwrPercent(rotateL || rotateR, power, rotationSpeed);
+        
     }
+
+
 
     void ProcessRotation(){
         //NEED TO FIX INTENDED GAME MECHANIC WITH GETTING STUCK ON SIDE ON PLANETS
