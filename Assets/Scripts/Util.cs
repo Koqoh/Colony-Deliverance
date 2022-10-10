@@ -1,32 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Util : MonoBehaviour
-{
-    public static float PwrPercent(bool on, float var, float max)
-    {
-        if (on)
-        {
-            var += 0.05f;
-        }
-        else
-        {
-            var = 0;
-        }
-        var = Mathf.Clamp(var, 0, max);
-        return var;
-    }
-    public static float PwrPercent(bool on, float var)
-    {
-        if (on)
-        {
-            var += 0.05f;
-        }
-        else
-        {
-            var = 0;
-        }
-        return var;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a1bcfddad5b15204de6f528145a7cb5d6fe95550c3fa7eb7345b2658d8a50365
+size 607
